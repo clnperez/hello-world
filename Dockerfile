@@ -6,6 +6,6 @@ COPY . hello
 WORKDIR hello
 RUN bazel build hello
 
-COPY ./bazel-bin/hello /usr/local/bin/hello
+RUN cp `find -L bazel-bin -name hello | head -1` /usr/local/bin/hello
 
 CMD hello
